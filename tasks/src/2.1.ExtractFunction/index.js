@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import './styles.css';
+import { func } from 'prop-types';
 
 /**
      Выдели метод отрисовки лота (renderLot), метод отрисовки поста (renderPost) и используй их.
@@ -8,34 +9,36 @@ import './styles.css';
 
 ReactDom.render(
   <div className="page">
-    <div className="lot">
-      <div className="lotName">Форма для выпекания</div>
-      <div className="lotDescription">Идеальна для приготовления десертов!</div>
-    </div>
+    {renderLot()}
     <div className="posts">
-      <div className="post">
-        <div className="postHeader">
-          <span className="postAuthor">Парень не промах</span>
-          <br />
-          <span className="postTime">2 часа назад</span>
-        </div>
-        <div className="postMessage">Попробую с удовольствием ;)</div>
-      </div>
-      <div className="post">
-        <div className="postHeader">
-          <span className="postAuthor">Милая девушка</span>
-          <br />
-          <span className="postTime">3 часа назад</span>
-        </div>
-        <div className="postMessage">
-          Можно использовать для выпекания чизкейков :)
-        </div>
-      </div>
+      {renderPost('Парень не промах', '2 часа назад', 'Попробую с удовольствием ;)')};
+      {renderPost('Милая девушка', '3 часа назад', ' Можно использовать для выпекания чизкейков :)')}
     </div>
   </div>,
   document.getElementById('app')
 );
 
+function renderLot() {
+  return (
+    <div className="lot">
+      <div className="lotName">Форма для выпекания</div>
+      <div className="lotDescription">Идеальна для приготовления десертов!</div>
+    </div>
+  )
+}
+
+function renderPost(name, time, message) {
+  return (
+    <div className="post">
+      <div className="postHeader">
+        <span className="postAuthor">{name}</span>
+        <br />
+        <span className="postTime">{time}</span>
+      </div>
+      <div className="postMessage">{message}</div>
+    </div>
+  )
+}
 /**
      Подсказки:
      - Чтобы вставить какое-то значение из JavaScript в верстку используй фигурные скобки:

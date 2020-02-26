@@ -1,5 +1,13 @@
 import './style.css';
-
+import React from 'react';
+import ReactDom from 'react-dom';
+// class HelloWorld extends React.Component {
+//     constructor(props) {
+//         super(props);
+//     }
+//     render() { return (<p>'Hello world'</p>) };
+// }
+ReactDom.render(<div className='hw'></div>,document.getElementById('root'));
 /**
  *  Итак, перед тобой пустой проект. Давай его чем-то заполним. Не стесняйся подсматривать в уже сделанные задачи,
  *  чтобы оттуда что-то скопировать.

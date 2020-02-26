@@ -28,7 +28,10 @@ const posts = [
     message: 'Цену-то загнули!'
   }
 ];
-
+const authors = [];
+for (let i = 0; i < posts.length; i++) {
+  authors.push(<span key={i}>{posts[i].author}</span>);
+}
 function renderPost(post) {
   return (
     <div className="post">
@@ -45,9 +48,7 @@ function renderPost(post) {
 function renderAuthors(posts) {
   return (
     <div className="authors">
-      <span>{posts[0].author}</span>
-      <span>{posts[1].author}</span>
-      <span>{posts[2].author}</span>
+      {authors}
     </div>
   );
 }
@@ -55,9 +56,7 @@ function renderAuthors(posts) {
 ReactDom.render(
   <div className="page">
     <div className="posts">
-      {renderPost(posts[0])}
-      {renderPost(posts[1])}
-      {renderPost(posts[2])}
+      {posts.map((post,id) => renderPost(post,id))}
     </div>
     {renderAuthors(posts)}
   </div>,
